@@ -1,74 +1,288 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import {
+  Animated,
+  FlatList,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import SearchInput from "@/components/home/SearchInput";
+import { LinearGradient } from "expo-linear-gradient";
+import { useRef } from "react";
+import { useScrollToTop } from "@react-navigation/native";
+import Carousel from "@/components/Carousel";
+import FeaturedItem from "@/components/list-items/FeaturedItem";
+import CategoryItem from "@/components/list-items/CategoryItem";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const carouselItems = [
+  {
+    title: "Welcome",
+    image: require("../../assets/images/hero.webp"),
+  },
+  {
+    title: "Welcome",
+    image: require("../../assets/images/hero.webp"),
+  },
+  {
+    title: "Welcome",
+    image: require("../../assets/images/hero.webp"),
+  },
+];
 
-export default function HomeScreen() {
+const categories = [
+  {
+    id: 1,
+    name: "Equipment Rentals",
+  },
+  {
+    id: 2,
+    name: "Crop Services",
+  },
+  {
+    id: 3,
+    name: "Fertilizers",
+  },
+  {
+    id: 4,
+    name: "Seeds",
+  },
+  {
+    id: 5,
+    name: "Pesticides",
+  },
+  {
+    id: 6,
+    name: "Irrigation",
+  },
+  {
+    id: 7,
+    name: "Harvesting",
+  },
+  {
+    id: 8,
+    name: "Transport",
+  },
+  {
+    id: 9,
+    name: "Storage",
+  },
+  {
+    id: 10,
+    name: "Others",
+  },
+];
+
+const featured = [
+  {
+    id: 1,
+    name: "Mahindra Arjun Novo",
+    image: require("../../assets/products/tractor.png"),
+    pricePerDay: "₹2,500/day",
+    location: "Haryana, India",
+  },
+  {
+    id: 2,
+    name: "Kubota MU5501",
+    image: require("../../assets/products/tractor.png"),
+    pricePerDay: "₹2,200/day",
+    location: "Punjab, India",
+  },
+  {
+    id: 3,
+    name: "John Deere 5310",
+    image: require("../../assets/products/tractor.png"),
+    pricePerDay: "₹3,000/day",
+    location: "Rajasthan, India",
+  },
+];
+
+export default function Index() {
+  const insets = useSafeAreaInsets();
+  const scrollRef = useRef(null);
+  const scrollY = useRef(new Animated.Value(0)).current;
+  useScrollToTop(scrollRef);
+
+  const HEADER_MAX_HEIGHT = 500;
+  const HEADER_MIN_HEIGHT = 100 + insets.top;
+  const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
+
+  const headerHeight = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: [HEADER_MAX_HEIGHT, HEADER_MIN_HEIGHT],
+    extrapolate: "clamp",
+  });
+
+  const animatedTranslateY = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: [0, -50],
+    extrapolate: "clamp",
+  });
+
+  const bannerTranslateY = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE],
+    outputRange: [0, -500],
+    extrapolate: "clamp",
+  });
+
+  const animatedOpacity = scrollY.interpolate({
+    inputRange: [0, HEADER_SCROLL_DISTANCE / 4],
+    outputRange: [1, 0],
+    extrapolate: "clamp",
+  });
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+    <View style={styles.container}>
+      <Animated.View
+        style={[
+          styles.header,
+          {
+            height: headerHeight,
+          },
+        ]}
+      >
+        <View style={{ marginTop: insets.top }} />
+        <LinearGradient
+          colors={[
+            "rgba(245,221,90,1)",
+            "rgba(245,221,90,0.8)",
+            "white",
+            "rgba(255,255,255,0)",
+          ]}
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+          }}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+
+        <Animated.Image
+          source={require("../../assets/images/logo.png")}
+          style={[
+            styles.logo,
+            {
+              opacity: animatedOpacity,
+            },
+          ]}
+        />
+
+        <Animated.View
+          style={[
+            styles.searchCon,
+            {
+              transform: [{ translateY: animatedTranslateY }],
+            },
+          ]}
+        >
+          <SearchInput />
+        </Animated.View>
+
+        <Animated.View
+          style={[
+            styles.bannerCon,
+            {
+              opacity: animatedOpacity,
+              transform: [{ translateY: bannerTranslateY }],
+            },
+          ]}
+        >
+          <Text style={styles.bannerTitle}>
+            Farming Essentials, Rentals, and More
+          </Text>
+          <Carousel carouselItems={carouselItems} />
+        </Animated.View>
+      </Animated.View>
+
+      <Animated.ScrollView
+        ref={scrollRef}
+        contentContainerStyle={styles.scrollViewContent}
+        onScroll={Animated.event(
+          [{ nativeEvent: { contentOffset: { y: scrollY } } }],
+          { useNativeDriver: false }
+        )}
+        scrollEventThrottle={16}
+      >
+        <Text style={styles.sectionTitle}>Categories</Text>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <FlatList
+            numColumns={categories.length / 2}
+            scrollEnabled={false}
+            data={categories}
+            contentContainerStyle={{
+              gap: 10,
+              paddingHorizontal: 12,
+            }}
+            columnWrapperStyle={{ gap: 10 }}
+            renderItem={({ index }) => (
+              <CategoryItem item={categories[index]} key={index} />
+            )}
+          />
+        </ScrollView>
+
+        <Text style={styles.sectionTitle}>Featured</Text>
+
+        {featured.map((item, index) => (
+          <FeaturedItem item={item} key={index} />
+        ))}
+
+        <View style={styles.footer}>
+          <Text style={styles.footerText}>Made with ❤️</Text>
+          <Text style={styles.footerText}>For the farmers, by the farmers</Text>
+        </View>
+      </Animated.ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
+  header: {
+    position: "absolute",
+    top: 0,
     left: 0,
-    position: 'absolute',
+    right: 0,
+    zIndex: 2,
+    overflow: "hidden",
+  },
+  logo: {
+    marginLeft: -24,
+    width: 200,
+    height: 50,
+  },
+  searchCon: {
+    marginHorizontal: 12,
+    zIndex: 2,
+  },
+  bannerCon: {
+    padding: 12,
+  },
+  bannerTitle: {
+    fontSize: 16,
+    fontWeight: "bold",
+    marginBottom: 12,
+    textAlign: "center",
+  },
+  scrollViewContent: {
+    paddingTop: 500,
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "#333",
+    marginVertical: 12,
+    marginStart: 12,
+  },
+  footer: {
+    height: 100,
+  },
+  footerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#333",
+    marginHorizontal: 12,
   },
 });

@@ -1,31 +1,44 @@
-# Welcome to your Expo app 👋
+# Welcome to Kheti Connect 🌾🌱
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Kheti Connect is a powerful Expo app designed to revolutionize the agricultural ecosystem by bridging the gap between farmers and consumers. Built in just two days, this app serves as a platform to connect stakeholders, promote sustainable farming practices, and simplify market access for farmers.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Farmer Registration**: Farmers can easily register to join the platform.
+- **Marketplace Access**: A seamless interface for consumers to connect with local farmers.
+- **Real-Time Updates**: Get instant notifications about produce availability and updates.
+- **User-Friendly Design**: Simplified navigation for farmers and consumers alike.
 
-   ```bash
-   npm install
-   ```
+## Get Started
 
-2. Start the app
+### 1. Install Dependencies
 
-   ```bash
-    npx expo start
-   ```
+```bash
+npm install
+```
 
-In the output, you'll find options to open the app in a
+### 2. Start the App
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+```bash
+npx expo start
+```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+In the output, you'll find options to open the app in:
 
-## Get a fresh project
+- [Development Build](https://docs.expo.dev/develop/development-builds/introduction/)
+- [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Expo Go](https://expo.dev/go)
+
+### 3. Explore and Contribute
+
+Start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+
+## Demo Video
+
+Here’s a quick demo of the Kheti Connect app in action:
+
+## Get a Fresh Project
 
 When you're ready, run:
 
@@ -35,16 +48,17 @@ npm run reset-project
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
 
-## Learn more
+## Learn More
 
-To learn more about developing your project with Expo, look at the following resources:
+To learn more about developing your project with Expo, check out the following resources:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- [Expo Documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
+- [Learn Expo Tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial to create a project that runs on Android, iOS, and the web.
 
-## Join the community
+## Join the Community
 
-Join our community of developers creating universal apps.
+Be part of our vibrant community of developers:
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+- [Expo on GitHub](https://github.com/expo/expo): View our open-source platform and contribute.
+- [Discord Community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
