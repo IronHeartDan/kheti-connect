@@ -39,28 +39,3 @@ Start developing by editing the files inside the **app** directory. This project
 Here’s a quick demo of the Kheti Connect app in action:
 <video src='https://github.com/user-attachments/assets/6b544bd0-e08e-460b-b790-aa5513c84492' width=180/>
 
-
-## Get a Fresh Project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn More
-
-To learn more about developing your project with Expo, check out the following resources:
-
-- [Expo Documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo Tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial to create a project that runs on Android, iOS, and the web.
-
-## Join the Community
-
-Be part of our vibrant community of developers:
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open-source platform and contribute.
-- [Discord Community](https://chat.expo.dev): Chat with Expo users and ask questions.
-
