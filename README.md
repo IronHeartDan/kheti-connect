@@ -37,6 +37,8 @@ Start developing by editing the files inside the **app** directory. This project
 ## Demo Video
 
 Here’s a quick demo of the Kheti Connect app in action:
+https://github.com/user-attachments/assets/6b544bd0-e08e-460b-b790-aa5513c84492
+
 
 ## Get a Fresh Project
 
