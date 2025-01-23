@@ -1,6 +1,6 @@
 # Welcome to Kheti Connect 🌾🌱
 
-Kheti Connect is a powerful Expo app designed to revolutionize the agricultural ecosystem by bridging the gap between farmers and consumers. Built in just two days, this app serves as a platform to connect stakeholders, promote sustainable farming practices, and simplify market access for farmers.
+Kheti Connect is a powerful Expo app designed to revolutionize the agricultural ecosystem by bridging the gap between farmers and consumers. This app serves as a platform to connect and simplify market access for farmers.
 
 ## Features
 
